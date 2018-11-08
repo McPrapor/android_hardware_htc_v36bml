@@ -1048,6 +1048,7 @@ Return<void> RadioImpl::getSignalStrength(int32_t serial) {
 #if VDBG
     RLOGD("getSignalStrength: serial %d", serial);
 #endif
+/* Return it back for v36bml_dugl
 #ifdef MTK_HARDWARE
     // treated as NOT_SUPPORTED
     RequestInfo *pRI = android::addRequestToList(serial, mSlotId,
@@ -1058,6 +1059,8 @@ Return<void> RadioImpl::getSignalStrength(int32_t serial) {
 #else
     dispatchVoid(serial, mSlotId, RIL_REQUEST_SIGNAL_STRENGTH);
 #endif
+*/
+    dispatchVoid(serial, mSlotId, RIL_REQUEST_SIGNAL_STRENGTH);	
     return Void();
 }
 
@@ -7810,7 +7813,7 @@ void convertRilCellInfoListToHal(void *response, size_t responseLen, hidl_vec<Ce
 #ifdef MTK_HARDWARE
 	RIL_CellInfo *rilCellInfo = rilCellInfohd[i];
 #endif
-	records[i].celInfoType = (CellInfoType) rilCellInfo->cellInfoType;
+	records[i].cellInfoType = (CellInfoType) rilCellInfo->cellInfoType;	    
 #if VDBG
     RLOGD("rilCellInfo->cellInfoType=%d records[%d].cellInfoType=%d",
 	(int)rilCellInfo->cellInfoType, i, (int)records[i].cellInfoType);
