@@ -1,6 +1,6 @@
 # HTC Desire 628 dual sim - AEX 5.x (Oreo 8.1.0)
 
-This is hardware tree for building of the Android Oreo 8.1.0 AOSP/AEX ROMs. See README.md at device tree. Many thanks to danielhk.
+This is hardware tree for building of the Android Oreo 8.1.0 AOSP/AEX ROMs. See README.md at device tree. Many thanks to danielhk and 4pda community.
 
 ---
 
