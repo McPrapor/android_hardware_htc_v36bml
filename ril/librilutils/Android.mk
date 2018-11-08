@@ -1,3 +1,3 @@
 #include $(CLEAR_VARS)
 
-include $(call my-dir)../../../../ril/librilutils/Android.mk
+include $(call my-dir)/../../../../ril/librilutils/Android.mk
