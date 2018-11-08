@@ -29,7 +29,7 @@
 #include "common.h"
 #include "cpp_bindings.h"
 
-using namespace android;
+//using namespace android;
 #define RTT_RESULT_SIZE (sizeof(wifi_rtt_result));
 typedef enum {
     RTT_SUBCMD_SET_CONFIG = ANDROID_NL80211_SUBCMD_RTT_RANGE_START,
@@ -67,7 +67,7 @@ typedef enum {
 
 typedef struct strmap_entry {
     int			id;
-    String8		text;
+    android::String8		text;
 } strmap_entry_t;
 
 struct dot11_rm_ie {
@@ -87,19 +87,19 @@ typedef struct dot11_rm_ie dot11_rm_ie_t;
 #define DOT11_MEASURE_TYPE_CIVICLOC	11  /* d11 measurement location civic */
 
 static const strmap_entry_t err_info[] = {
-    {RTT_STATUS_SUCCESS, String8("Success")},
-    {RTT_STATUS_FAILURE, String8("Failure")},
-    {RTT_STATUS_FAIL_NO_RSP, String8("No reponse")},
-    {RTT_STATUS_FAIL_INVALID_TS, String8("Invalid Timestamp")},
-    {RTT_STATUS_FAIL_PROTOCOL, String8("Protocol error")},
-    {RTT_STATUS_FAIL_REJECTED, String8("Rejected")},
-    {RTT_STATUS_FAIL_NOT_SCHEDULED_YET, String8("not scheduled")},
-    {RTT_STATUS_FAIL_SCHEDULE,  String8("schedule failed")},
-    {RTT_STATUS_FAIL_TM_TIMEOUT, String8("timeout")},
-    {RTT_STATUS_FAIL_AP_ON_DIFF_CHANNEL, String8("AP is on difference channel")},
-    {RTT_STATUS_FAIL_NO_CAPABILITY, String8("no capability")},
-    {RTT_STATUS_FAIL_BUSY_TRY_LATER, String8("busy and try later")},
-    {RTT_STATUS_ABORTED, String8("aborted")}
+    {RTT_STATUS_SUCCESS, android::String8("Success")},
+    {RTT_STATUS_FAILURE, android::String8("Failure")},
+    {RTT_STATUS_FAIL_NO_RSP, android::String8("No reponse")},
+    {RTT_STATUS_FAIL_INVALID_TS, android::String8("Invalid Timestamp")},
+    {RTT_STATUS_FAIL_PROTOCOL, android::String8("Protocol error")},
+    {RTT_STATUS_FAIL_REJECTED, android::String8("Rejected")},
+    {RTT_STATUS_FAIL_NOT_SCHEDULED_YET, android::String8("not scheduled")},
+    {RTT_STATUS_FAIL_SCHEDULE,  android::String8("schedule failed")},
+    {RTT_STATUS_FAIL_TM_TIMEOUT, android::String8("timeout")},
+    {RTT_STATUS_FAIL_AP_ON_DIFF_CHANNEL, android::String8("AP is on difference channel")},
+    {RTT_STATUS_FAIL_NO_CAPABILITY, android::String8("no capability")},
+    {RTT_STATUS_FAIL_BUSY_TRY_LATER, android::String8("busy and try later")},
+    {RTT_STATUS_ABORTED, android::String8("aborted")}
 };
 
 static const char*
