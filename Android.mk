@@ -6,5 +6,5 @@
 LOCAL_PATH := $(my-dir)
 ifeq ($(TARGET_DEVICE),note3)
 include $(call first-makefiles-under,$(LOCAL_PATH))
-include $(call my-dir)/../../../../ril/librilutils/Android.mk
+include hardware/ril/librilutils/Android.mk
 endif
