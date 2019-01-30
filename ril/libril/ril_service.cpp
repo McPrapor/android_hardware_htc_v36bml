@@ -6925,7 +6925,7 @@ int radio::onUssdInd(int slotId, int indicationType,
 	}
 	char **strings = (char **) response;
 // dirty hack but what can we do about that?	    
-	if (strings[0] == "2" && strings[1] != "") {
+	if (strcmp(strings[0],"2") == 0 && strcmp(strings[1], "") != 1) {
 		strings[0] = "0";	
 	}
 // end dirty hack	    	    
