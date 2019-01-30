@@ -1941,10 +1941,10 @@ Return<void> RadioImpl::getDeviceIdentity(int32_t serial) {
 #if VDBG
     RLOGD("getDeviceIdentity: serial %d", serial);
 #endif
-#ifdef MTK_HARDWARE
+//#ifdef MTK_HARDWARE
     dispatchVoid(-1, mSlotId, RIL_REQUEST_GET_IMEI);	// ** prepare for
     dispatchVoid(-1, mSlotId, RIL_REQUEST_GET_IMEISV);	// not supported
-#endif
+//#endif
     dispatchVoid(serial, mSlotId, RIL_REQUEST_DEVICE_IDENTITY);
     return Void();
 }
@@ -6915,7 +6915,7 @@ int radio::onUssdInd(int slotId, int indicationType,
 		     int token, RIL_Errno e, void *response, size_t responseLen) {
     if (radioService[slotId] != NULL && radioService[slotId]->mRadioIndication != NULL) {
 	if (response == NULL || responseLen != 2 * sizeof(char *)) {
-	    RLOGE("onUssdInd: invalid response");
+	    RLOGE("onUssdInd: invalid response. responseLen = %d, 2 * sizeof(char *) = %d", responseLen, 2 * sizeof(char *));
 	    return 0;
 	}
 	char **strings = (char **) response;
