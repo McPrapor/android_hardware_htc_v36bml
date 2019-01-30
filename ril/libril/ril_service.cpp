@@ -5581,9 +5581,9 @@ int radio::deleteSmsOnRuimResponse(int slotId,
 int radio::getDeviceIdentityResponse(int slotId,
 				    int responseType, int serial, RIL_Errno e, void *response,
 				    size_t responseLen) {
-#if VDBG
+//#if VDBG
     RLOGD("getDeviceIdentityResponse: serial %d", serial);
-#endif
+//#endif
 
     if (radioService[slotId]->mRadioResponse != NULL) {
 	RadioResponseInfo responseInfo = {};
