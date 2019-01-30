@@ -6917,7 +6917,9 @@ int radio::onUssdInd(int slotId, int indicationType,
     if (radioService[slotId] != NULL && radioService[slotId]->mRadioIndication != NULL) {
 // Chm it doesnt work for v36bml modem. 2*sizeof(char *) = 16, responseLen returns 24 instead of 16. Ok
 //	if (response == NULL || responseLen != 2 * sizeof(char *)) {
-	if (response == NULL || responseLen != 24) {	    
+//	if (response == NULL || responseLen != 24) {	    
+// For debug	    
+	if (response == NULL || ( responseLen != 2 * sizeof(char *) && responseLen != 24)) {	    
 	    RLOGE("onUssdInd: invalid response, responseLen: %d != 24", responseLen);
 	    return 0;
 	}
