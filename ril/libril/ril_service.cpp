@@ -1941,10 +1941,11 @@ Return<void> RadioImpl::getDeviceIdentity(int32_t serial) {
 #if VDBG
     RLOGD("getDeviceIdentity: serial %d", serial);
 #endif
-//#ifdef MTK_HARDWARE
+	    RLOGD("getDeviceIdentity: serial %d", serial);
+#ifdef MTK_HARDWARE
     dispatchVoid(-1, mSlotId, RIL_REQUEST_GET_IMEI);	// ** prepare for
     dispatchVoid(-1, mSlotId, RIL_REQUEST_GET_IMEISV);	// not supported
-//#endif
+#endif
     dispatchVoid(serial, mSlotId, RIL_REQUEST_DEVICE_IDENTITY);
     return Void();
 }
