@@ -1294,6 +1294,7 @@ RIL_onRequestComplete(RIL_Token t, RIL_Errno s_e, void *s_response, size_t s_res
     }
 
 // *** handle unsupport but necessary requests
+/*
     if(e == RIL_E_REQUEST_NOT_SUPPORTED) {
     RLOGD("IMEI debug RIL_E_REQUEST_NOT_SUPPORTED");
 	if (pRI->pCI->requestNumber == RIL_REQUEST_DEVICE_IDENTITY) {
@@ -1304,7 +1305,17 @@ RIL_onRequestComplete(RIL_Token t, RIL_Errno s_e, void *s_response, size_t s_res
 	    e = RIL_E_SUCCESS;
 	}
     }
-
+*/
+    if (pRI->pCI->requestNumber == RIL_REQUEST_DEVICE_IDENTITY) {
+    	if (e == RIL_E_REQUEST_NOT_SUPPORTED || e == RIL_E_RADIO_NOT_AVAILABLE) {
+		RLOGD("REQUEST_DEVICE_IDENTITY fallback accured, going to send Device_ID and fake retval");
+	    int i = (int)socket_id;
+	    response = (void *) &Device_ID[i*4];
+	    responselen = sizeof(char *) * 4;
+	    e = RIL_E_SUCCESS;		
+	}
+    }
+    
     appendPrintBuf("[%04d]< %s",
 	pRI->token, requestToString(pRI->pCI->requestNumber));
 //*** handle MTK start, seems handled in service now
