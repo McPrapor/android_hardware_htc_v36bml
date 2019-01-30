@@ -6920,15 +6920,20 @@ int radio::onUssdInd(int slotId, int indicationType,
 //	if (response == NULL || responseLen != 24) {	    
 // For debug	    
 	if (response == NULL || ( responseLen != 2 * sizeof(char *) && responseLen != 24)) {	    
-	    RLOGE("onUssdInd: invalid response, responseLen: %d != 24", responseLen);
+	    RLOGE("onUssdInd: invalid response, responseLen: %d != 24 and != 16", responseLen);
 	    return 0;
 	}
 	char **strings = (char **) response;
 	char *mode = strings[0];
 	hidl_string msg = convertCharPtrToHidlString(strings[1]);
+// dirty hack but what can we do about that?	    
+	if (mode == "2") {
+		mode = "0";	
+	}
+// end dirty hack	    
 	UssdModeType modeType = (UssdModeType) atoi(mode);
 #if VDBG
-	RLOGD("onUssdInd: mode %s", mode);
+	RLOGD("onUssdInd: mode %s msg: %s", mode, msg);
 #endif
 	Return<void> retStatus = radioService[slotId]->mRadioIndication->onUssd(
 		convertIntToRadioIndicationType(indicationType), modeType, msg);
