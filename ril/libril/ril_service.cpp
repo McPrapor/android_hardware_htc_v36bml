@@ -6915,8 +6915,10 @@ int radio::newSmsOnSimInd(int slotId, int indicationType,
 int radio::onUssdInd(int slotId, int indicationType,
 		     int token, RIL_Errno e, void *response, size_t responseLen) {
     if (radioService[slotId] != NULL && radioService[slotId]->mRadioIndication != NULL) {
-	if (response == NULL || responseLen != 2 * sizeof(char *)) {
-	    RLOGE("onUssdInd: invalid response. responseLen = %d, 2 * sizeof(char *) = %d", responseLen, 2 * sizeof(char *));
+// Chm it doesnt work for v36bml modem. 2*sizeof(char *) = 16, responseLen returns 24 instead of 16. Ok
+//	if (response == NULL || responseLen != 2 * sizeof(char *)) {
+	if (response == NULL || responseLen != 24) {	    
+	    RLOGE("onUssdInd: invalid response, responseLen: %d != 24", responseLen);
 	    return 0;
 	}
 	char **strings = (char **) response;
